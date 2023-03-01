@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head">
+   <title>Info</title>
+</head>
+<body>
+
+<span th:replace="fragments/header :: body/content()"></span>
+
+<main role="main" class="container">
+
+   <div class="starter-template">
+      <h1>Logout?</h1>
+
+      <form th:action="@{/logout}" method="post">
+
+         <button type="submit" class="btn">Abmelden</button>
+      </form>
+   </div>
+
+</main><!-- /.container -->
+
+<span th:replace="fragments/footer :: body/content()"></span>
+
+</body>
+</html>

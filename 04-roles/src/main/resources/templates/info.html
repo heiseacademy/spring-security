@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head">
+   <title>Info</title>
+</head>
+<body>
+
+<span th:replace="fragments/header :: body/content()"></span>
+
+<main role="main" class="container">
+
+   <div class="starter-template">
+      <h1>User Info</h1>
+      <p class="lead">
+         <span sec:authorize="isAnonymous()">Nicht angemeldet.</span>
+         <span sec:authorize="isAuthenticated()">Angemeldet.</span>
+         <span sec:authorize="fullyAuthenticated">Frisch angemeldet.</span>
+         <span sec:authorize="isRememberMe()">Remember me.</span>
+      </p>
+      <p>
+         Username: <span sec:authentication="name"></span><br />
+         <span th:text="${#authentication.name}"></span>
+      </p>
+      <p>
+         Roles: <span sec:authentication="principal.authorities"></span>
+         <span th:text="${#authentication.authorities}"></span>
+      </p>
+      <span>
+         <span sec:authorize="hasRole('ADMIN')">Admin Rechte!</span>
+         <span th:if="${#authorization.expression('hasRole(''ADMIN'')')}">Admin Rechte!</span>
+      </span>
+      <span>
+         <span sec:authorize="hasAuthority('ROLE_ADMIN')">Authority: Admin Rolle</span>
+         <span th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">Authority: Admin Rolle</span>
+      </span>
+   </div>
+
+</main><!-- /.container -->
+
+<span th:replace="fragments/footer :: body/content()"></span>
+
+</body>
+</html>

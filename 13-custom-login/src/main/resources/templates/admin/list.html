@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head">
+   <title>Nutzerverwaltung</title>
+</head>
+<body>
+
+<span th:replace="fragments/header :: body/content()"></span>
+
+<main role="main" class="container">
+
+   <h1>Nutzverwaltung</h1>
+   <table class="table">
+      <thead>
+      <tr>
+         <th>Name</th>
+         <th>Rollen</th>
+         <th>Aktion</th>
+      </tr>
+      </thead>
+      <tbody>
+         <tr th:each="user: ${users}">
+            <td th:text="${user.username}"></td>
+            <td><span th:each="authority: ${user.authorities}">[[${authority}]]</span> </td>
+            <td>
+               <form action="#" th:action="@{/admin/{id}/delete(id=${user.id})}" method="post">
+                  <button class="alert-danger">Löschen</button>
+               </form>
+            </td>
+         </tr>
+      </tbody>
+   </table>
+
+   <h2>Nutzer anlegen</h2>
+   <form action="#" th:action="@{/admin}" th:object="${user}" method="post">
+      <div class="row">
+         <input th:field="*{username}" type="text" class="form-control" id="username" placeholder="username">
+      </div>
+      <div class="row">
+         <input th:field="*{password}" type="text" class="form-control" id="password" placeholder="secret">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg">Anlegen</button>
+   </form>
+
+</main><!-- /.container -->
+
+<span th:replace="fragments/footer :: body/content()"></span>
+
+</body>
+</html>

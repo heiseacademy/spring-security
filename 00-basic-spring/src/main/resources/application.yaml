@@ -1,0 +1,73 @@
+logging:
+  pattern:
+# Ohne Datum/Uhrzeit, besser fuer Video-Demo
+    console: "%magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+  level:
+    de.trion.trainingapp: info
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  data:
+    web:
+      pageable:
+        default-page-size: 4
+  jpa:
+#    show-sql: true
+    hibernate:
+      ddl-auto: validate
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+#  datasource:
+#    url: jdbc:mariadb://localhost/training
+#    username: root
+#    password: training
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ''
+  flyway:
+    locations:
+      - classpath:db/migration
+      - classpath:db/dev-migration
+
+
+---
+spring:
+  config:
+    activate:
+      on-profile: mariadb
+
+  datasource:
+    url: jdbc:mariadb://localhost/app
+    username: app
+    password: app
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: ''
+
+  flyway:
+    locations:
+      - classpath:db/migration
+      - classpath:db/dev-migration

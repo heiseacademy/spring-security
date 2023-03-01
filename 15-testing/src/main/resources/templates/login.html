@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"
+   xmlns:th="http://www.thymeleaf.org"
+   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/header :: head">
+   <title>Info</title>
+</head>
+<body>
+
+<span th:replace="fragments/header :: body/content()"></span>
+
+<main role="main" class="container">
+
+   <div class="starter-template">
+      <h1>Login</h1>
+
+      <form th:action="@{/login}" method="post">
+         <div th:if="${param.error}" class="alert alert-danger">Falsche Zugangsdaten</div>
+
+         <label for="username">Username</label>
+         <input type="text" id="username" name="username" />
+         <label for="password">Passwort</label>
+         <input type="password" id="password" name="password" />
+
+         <button type="submit" class="btn">Login</button>
+      </form>
+   </div>
+
+</main><!-- /.container -->
+
+<span th:replace="fragments/footer :: body/content()"></span>
+
+</body>
+</html>

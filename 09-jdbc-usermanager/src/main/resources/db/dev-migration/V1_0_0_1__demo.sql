@@ -1,0 +1,14 @@
+INSERT INTO TBL_TRAININGS
+(COL_ID, COL_TOPIC, COL_LOCATION, COL_INSTRUCTOR_NAME, COL_DESCRIPTION)
+VALUES ('1', 'Spring Boot', 'Video', 'Adam', 'Spring Boot Training'),
+       ('2', 'Spring Security', 'Remote', 'Bettina', 'Spring Security Training'),
+       ('3', 'Spring Web MVC', 'Remote', 'Thomas', 'Online Training'),
+       ('4', 'Spring Reactor', 'Remote', 'Thomas', 'Online Training'),
+       ('5', 'Spring Batch', 'Remote', 'Thomas', 'Online Training'),
+       ('6', 'Spring Integration', 'Remote', 'Thomas', 'Online Training'),
+       ('7', 'Spring Framework', 'Remote', 'Thomas', 'Online Training'),
+       ('8', 'Angular Basics', 'Remote', 'Karsten', 'Online Training'),
+       ('9', 'Angular und TypeScript', 'Remote', 'Karsten', 'Online Training'),
+       ('10', 'Angular Advanced', 'Remote', 'Karsten', 'Online Training'),
+       ('11', 'Angular Performance', 'Remote', 'Karsten', 'Online Training')
+;
